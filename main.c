@@ -37,7 +37,7 @@ void Task1(){
 if(((GPIO_PORTB_DATA_R >>6) & 1) == 0){
 	portBASE_TYPE xstatus;
 while(((GPIO_PORTB_DATA_R >>6) & 1) == 0){
-	xstatus=xQueueSendToBack(xQueueDOWN,&i,0);
+	xstatus=xQueueSendToBack(xQueueDOWN,&i,100);
 	i++;
 }
 //button not being pressed anymore
@@ -49,7 +49,7 @@ xstatus=xQueueSendToBack(xQueueDOWN,&x,0);
 if(((GPIO_PORTB_DATA_R >>7) & 1) == 0){
 	portBASE_TYPE xstatus;
 while(((GPIO_PORTB_DATA_R >>7) & 1) == 0){
-	xstatus=xQueueSendToBack(xQueueUP,&i,0);
+	xstatus=xQueueSendToBack(xQueueUP,&i,100);
 	i++;
 }
 //button not being pressed anymore
@@ -77,7 +77,7 @@ void Task2(){
 if(((GPIO_PORTC_DATA_R >>4) & 1) == 0){
 	portBASE_TYPE xstatus;
 while(((GPIO_PORTC_DATA_R >>4) & 1) == 0){
-	xstatus=xQueueSendToBack(xQueueDOWN,&i,0);
+	xstatus=xQueueSendToBack(xQueueDOWN,&i,100);
 	i++;
 }
 //button not being pressed anymore
@@ -89,7 +89,7 @@ xstatus=xQueueSendToBack(xQueueDOWN,&x,0);
 if(((GPIO_PORTC_DATA_R >>5) & 1) == 0){
 	portBASE_TYPE xstatus;
 while(((GPIO_PORTC_DATA_R >>5) & 1) == 0){
-	xstatus=xQueueSendToBack(xQueueUP,&i,0);
+	xstatus=xQueueSendToBack(xQueueUP,&i,100);
 	i++;
 }
 //button not being pressed anymore
