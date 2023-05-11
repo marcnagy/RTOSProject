@@ -153,7 +153,7 @@ if(xSemaphoreGetMutexHolder(EmergencyMutex) == NULL ){
 	else if(newvalue==0 && prevValue>10000 && prevValue<20000){
 			motor_up();
 		//limit switch
-		while(((GPIO_PORTF_DATA_R >>4) & 1) == 1){
+		while(((GPIO_PORTF_DATA_R >>4) & 1) == 1 &&((GPIO_PORTB_DATA_R >>6) & 1) == 1 &&((GPIO_PORTB_DATA_R >>6) & 1) == 1){
 			//sensor sensed obstacle
 	if(((GPIO_PORTE_DATA_R >>2) & 1) == 0){
 			xSemaphoreGive(EmergencySemaphore);
@@ -191,7 +191,7 @@ void DOWN(){
 		if(newvalue==0 && prevValue>10000 && prevValue<20000){
 		motor_down();
 		 //limit switch
-		while(((GPIO_PORTF_DATA_R >>0) & 1) == 1);
+		while(((GPIO_PORTF_DATA_R >>0) & 1) == 1 && ((GPIO_PORTB_DATA_R >>7) & 1) == 1 &&((GPIO_PORTB_DATA_R >>7) & 1) == 1);
 			motor_stop();
 	}
 		
