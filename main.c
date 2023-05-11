@@ -37,7 +37,7 @@ void Task1(){
 if(((GPIO_PORTB_DATA_R >>6) & 1) == 0){
 	portBASE_TYPE xstatus;
 while(((GPIO_PORTB_DATA_R >>6) & 1) == 0){
-	xstatus=xQueueSendToBack(xQueueDOWN,&i,100);
+	xstatus=xQueueSendToBack(xQueueDOWN,&i,0);
 	i++;
 }
 //button not being pressed anymore
@@ -49,7 +49,7 @@ xstatus=xQueueSendToBack(xQueueDOWN,&x,0);
 if(((GPIO_PORTB_DATA_R >>7) & 1) == 0){
 	portBASE_TYPE xstatus;
 while(((GPIO_PORTB_DATA_R >>7) & 1) == 0){
-	xstatus=xQueueSendToBack(xQueueUP,&i,100);
+	xstatus=xQueueSendToBack(xQueueUP,&i,0);
 	i++;
 }
 //button not being pressed anymore
@@ -77,7 +77,7 @@ void Task2(){
 if(((GPIO_PORTC_DATA_R >>4) & 1) == 0){
 	portBASE_TYPE xstatus;
 while(((GPIO_PORTC_DATA_R >>4) & 1) == 0){
-	xstatus=xQueueSendToBack(xQueueDOWN,&i,100);
+	xstatus=xQueueSendToBack(xQueueDOWN,&i,0);
 	i++;
 }
 //button not being pressed anymore
@@ -89,7 +89,7 @@ xstatus=xQueueSendToBack(xQueueDOWN,&x,0);
 if(((GPIO_PORTC_DATA_R >>5) & 1) == 0){
 	portBASE_TYPE xstatus;
 while(((GPIO_PORTC_DATA_R >>5) & 1) == 0){
-	xstatus=xQueueSendToBack(xQueueUP,&i,100);
+	xstatus=xQueueSendToBack(xQueueUP,&i,0);
 	i++;
 }
 //button not being pressed anymore
@@ -153,7 +153,7 @@ if(xSemaphoreGetMutexHolder(EmergencyMutex) == NULL ){
 	else if(newvalue==0 && prevValue>10000 && prevValue<20000){
 			motor_up();
 		//limit switch
-		while(((GPIO_PORTF_DATA_R >>4) & 1) == 1 &&((GPIO_PORTB_DATA_R >>6) & 1) == 1 &&((GPIO_PORTB_DATA_R >>6) & 1) == 1){
+		while(((GPIO_PORTF_DATA_R >>4) & 1) == 1 &&((GPIO_PORTC_DATA_R >>4) & 1) == 1 &&((GPIO_PORTB_DATA_R >>6) & 1) == 1){
 			//sensor sensed obstacle
 	if(((GPIO_PORTE_DATA_R >>2) & 1) == 0){
 			xSemaphoreGive(EmergencySemaphore);
@@ -191,7 +191,7 @@ void DOWN(){
 		if(newvalue==0 && prevValue>10000 && prevValue<20000){
 		motor_down();
 		 //limit switch
-		while(((GPIO_PORTF_DATA_R >>0) & 1) == 1 && ((GPIO_PORTB_DATA_R >>7) & 1) == 1 &&((GPIO_PORTB_DATA_R >>7) & 1) == 1);
+		while(((GPIO_PORTF_DATA_R >>0) & 1) == 1 && ((GPIO_PORTB_DATA_R >>7) & 1) == 1 &&((GPIO_PORTC_DATA_R >>5) & 1) == 1);
 			motor_stop();
 	}
 		
